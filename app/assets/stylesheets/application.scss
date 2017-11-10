@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "toastr";
 
 
 .footer a {
@@ -14,4 +15,9 @@
    margin-top: -70px;
    }
 
+.toast-top-right {
+  top: 50px;
+  margin: 0 auto;
+  left: 77%;
+}
 
