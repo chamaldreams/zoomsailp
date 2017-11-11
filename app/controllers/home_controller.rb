@@ -7,17 +7,23 @@ class HomeController < ApplicationController
   end
 
   def admin
+      authorize! :asmin , HomeController,:message => "You Can't Access to admin Account."
   end
 
   def customer
+        authorize! :bbs , HomeController,:message => "You Can't Access to customer Account."
   end
 
   def dealer
+        authorize! :bbs , HomeController,:message => "You Can't Access to dealer Account."
   end
 
   def production
+         authorize! :bbs , HomeController,:message => "You Can't Access to production Account."
   end
 
   def guest
+     authorize! :guest , HomeController
+
   end
 end
