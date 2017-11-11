@@ -80,7 +80,7 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
   config.action_mailer.default_url_options = { :host => 'rocky-gorge-94377.herokuapp.com' }
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
   
@@ -88,7 +88,7 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
 
-  config.action_mailer.smtp_settings = {
+  ActionMailer::Base.smtp_settings = {
     user_name: 'rubychamal@gmail.com' ,
     password: 'aquabigbtasst525' ,
     domain: 'gmail.com',
@@ -96,6 +96,7 @@ Rails.application.configure do
     port: '587',
     authentication: :plain,
     enable_starttls_auto: true
+    openssl_verify_mode: 'none'
   }
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
