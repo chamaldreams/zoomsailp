@@ -88,15 +88,14 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
 
-  ActionMailer::Base.smtp_settings = {
-    user_name: 'rubychamal@gmail.com' ,
+  config.action_mailer.smtp_settings = {
+    user_name: 'aquachamal@yahoo.com' ,
     password: 'aquabigbtasst525' ,
-    domain: 'gmail.com',
-    address: 'smtp.gmail.com',
+    domain: 'yahoo.com',
+    address: 'smtp.bizmail.yahoo.com',
     port: '587',
     authentication: :plain,
     enable_starttls_auto: true
-    
   }
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
