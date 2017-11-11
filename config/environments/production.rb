@@ -88,7 +88,7 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
 
-  ActionMailer::Base.smtp_settings = {
+  UserMailer::Base.smtp_settings = {
     user_name: 'rubychamal@gmail.com' ,
     password: 'aquabigbtasst525' ,
     domain: 'gmail.com',
@@ -96,7 +96,7 @@ Rails.application.configure do
     port: '587',
     authentication: :plain,
     enable_starttls_auto: true
-    openssl_verify_mode: 'none'
+    :openssl_verify_mode  => 'none'
   }
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
