@@ -96,7 +96,7 @@ Rails.application.configure do
     port: '587',
     authentication: :plain,
     enable_starttls_auto: true
-    
+    openssl_verify_mode: 'none'
   }
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
