@@ -50,7 +50,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
   
@@ -59,8 +59,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    user_name: Rails.application.secrets.mail_username,
-    password: Rails.application.secrets.mail_password,
+    user_name: 'rubychamal@gmail.com' ,
+    password: 'aquabigbtasst525',
     domain: 'gmail.com',
     address: 'smtp.gmail.com',
     port: '587',
