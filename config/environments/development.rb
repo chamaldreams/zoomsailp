@@ -59,13 +59,14 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    user_name: 'rubychamal@gmail.com' ,
-    password: 'aquabigbtasst525',
-    domain: 'gmail.com',
-    address: 'smtp.gmail.com',
+    user_name: 'aquachamal@yahoo.com' ,
+    password: 'aquabigbtasst525', 
+    domain: 'rocky-gorge-94377.herokuapp.com',
+    address: 'smtp.mail.yahoo.com',
     port: '587',
     authentication: :plain,
     enable_starttls_auto: true
   }
+
   
 end
