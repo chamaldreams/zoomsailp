@@ -61,7 +61,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     user_name: 'aquachamal@yahoo.com' ,
     password: 'aquabigbtasst525', 
-    domain: 'rocky-gorge-94377.herokuapp.com',
+    domain: 'yahoo.com',
     address: 'smtp.mail.yahoo.com',
     port: '587',
     authentication: :plain,
