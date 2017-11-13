@@ -55,11 +55,12 @@
 <h5>Upload your profile picture</h5>
 </div>
 <div class="panel-body">
-<%= f.file_field :avatar, class: 'inputfile'%>
+<%= f.file_field :avatar%>
 </div>
 </div>
 </div>
 </div>
+
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
