@@ -8,14 +8,26 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          
+         <%if !current_user%> 
           <%= link_to 'ZoomSails', root_path, class: 'navbar-brand' %>
+         <% elsif current_user.has_role? :guest%>
+          <%= link_to 'ZoomSails', home_guest_path, class: 'navbar-brand' %>
+         <% elsif current_user.has_role? :admin%> 
+          <%= link_to 'ZoomSails', home_admin_path, class: 'navbar-brand' %>
+         <% elsif current_user.has_role? :customer%> 
+          <%= link_to 'ZoomSails', home_customer_path, class: 'navbar-brand' %>
+         <% elsif current_user.has_role? :dealer%> 
+          <%= link_to 'ZoomSails', home_dealer_path, class: 'navbar-brand' %>
+         <% elsif current_user.has_role? :prodution%> 
+          <%= link_to 'ZoomSails', home_production_path, class: 'navbar-brand' %> 
+          <%end%>
         </div>
+        
         
 
 <% if current_user and current_user.has_role? :guest %>
- <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
+ <div class="collapse navbar-collapse pull-right">
+          <ul class="nav navbar-nav">
 
            <li><%= link_to "#{current_user.email.downcase} #{current_user.roles_name}", edit_user_registration_path %></li>
            <li class="round-image-50"><%= image_tag(current_user.avatar.url(:thumb)) %></li>
@@ -26,7 +38,6 @@
            </div>
            </div>
 <% end %>            
-
 
 
 
