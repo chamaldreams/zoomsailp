@@ -32,7 +32,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem "rolify"
 gem 'cancancan', '~> 2.0'
-
+gem 'paperclip', '~> 4.1'
 gem 'toastr-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
 
 def configure_permitted_parameter
  
-  	devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name,:last_name, :company_name, :telephone,:fax, :billing_address, :shipping_address])
-  	devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :company_name, :telephone,:fax, :web, :billing_address, :shipping_address])
+  	devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name,:last_name, :company_name, :telephone,:fax, :billing_address, :shipping_address,:avatar])
+  	devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :company_name, :telephone,:fax, :web, :billing_address, :shipping_address,:avatar])
 end
 
 rescue_from CanCan::AccessDenied do |exception|
