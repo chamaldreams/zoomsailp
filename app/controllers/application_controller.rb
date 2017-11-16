@@ -54,26 +54,6 @@ elsif current_user.has_role? :production
 end 
 end     		
 
-def after_update_path_for(resource)
-  
- if current_user.has_role? :guest or  current_user.roles.empty?
- home_guest_path 
-
- elsif current_user.has_role? :admin or current_user.has_role? :super_admin
- home_admin_path
-
-elsif current_user.has_role? :customer
- home_customer_path
-
-elsif current_user.has_role? :dealer
- home_dealer_path
-
-elsif current_user.has_role? :production
- home_production_path
-
- 
-end 
-end                  
 
 
 

@@ -1,0 +1,93 @@
+<div class="row-fluid">
+  <div class="span12">
+  	<div class="alert alert-info">
+  		<h2><center>Welcome to <%=@user.first_name%>'s Profile</center></h2>
+  	</div>
+
+<div class="row-fluid">
+	<div class="span6">
+		<div class="alert alert-info">
+			<div class="row-fluid">
+				<div class="span6 pull-right">
+					<%= image_tag(@user.avatar.url(:large), class: 'img-circle') %>  		
+                </div>
+                <div class="span6">
+					<h4>Name : <%= @user.first_name%> <%= @user.last_name%></h4> 
+					<h4>Email : <%= @user.email%></h4>	
+					<h4>Company Name : <%= @user.company_name%></h4>
+					<h4>Telephone : <%= @user.telephone%></h4>
+					<h4>Fax : <%= @user.fax%></h4>
+					<h4>Web : <%= @user.web%></h4>
+					<h4>Billing Address : <%= @user.billing_address%></h4>
+					<h4>Shipping Address : <%= @user.shipping_address%></h4>
+
+					<hr>
+
+					<h5>Sign In Count : <%= @user.sign_in_count%></h5>
+					<h5>Current sign in at : <%=@user.current_sign_in_at%></h5>
+					<h5>Last sign in at : <%=@user.last_sign_in_at%></h5>
+					<h5>Current sign in ip : <%=@user.current_sign_in_ip%></h5>
+					<h5>Last sign in ip : <%=@user.last_sign_in_ip%></h5>
+
+					<hr>
+
+					<h5>User Role : <%=@user.roles_name%> <button  class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal">Change Role</button></h5>
+					<!-- Modal -->
+					  <div class="modal fade" id="myModal" role="dialog">
+					    <div class="modal-dialog modal-lg">
+			
+					      <div class="modal-content">
+					 
+					        <div class="modal-header">
+					          <button type="button" class="close" data-dismiss="modal">&times;</button>
+					          <h4 class="modal-title">Modal Header</h4>
+					        </div>
+					        <div class="modal-body">
+					          <fieldset>
+					          	<legend>User Roles</legend>
+					          	
+					          	<%= form_for @user do |f| %>
+					          		<% Role.all.each do |role|%>
+					          			<%= check_box_tag 'user[role_ids][]',role,@user.role_ids.include?(role.id) %>
+					          			<%= role.name%><br>
+					          			<%end%>
+					          			<%=f.submit%>
+					          			<%end%>
+
+
+					          </fieldset>
+					        </div>
+					        <div class="modal-footer">
+					          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					        </div>
+					      </div>
+					      </div>
+					      </div>
+					      
+
+
+
+					        </div>
+
+					        <hr>
+
+					        <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-success btn-sm'%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </div>
+      </div>
+  </div>
+</div>
+  </div>
+</div>

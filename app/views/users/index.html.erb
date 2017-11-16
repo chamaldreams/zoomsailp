@@ -1,0 +1,204 @@
+<div class="container">
+  <h2>User Management</h2>
+  <br>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">All Users</a></li>
+    <li><a data-toggle="tab" href="#menu1">Admins</a></li>
+    <li><a data-toggle="tab" href="#menu2">Production</a></li>
+    <li><a data-toggle="tab" href="#menu3">Customer</a></li>
+    <li><a data-toggle="tab" href="#menu4">Dealer</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h3>All Users!</h3>
+     
+      <div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>first Name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Sign in count</th>
+        <th>last sign in Ip</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% if current_user.has_role? :admin or current_user.has_role? :super_admin%>
+       <% @users.each do |user|%>
+      <tr>
+        <td><%=link_to(user.first_name,user)%></td>
+        <td><%=user.last_name%></td>
+        <td><%=user.email%></td>
+        <td><%=user.sign_in_count%></td>
+        <td><%=user.last_sign_in_ip%></td>
+        <td><%=user.roles_name%></td>
+      </tr> 
+      <%end%>
+      <% end %>
+          
+    </tbody>
+  </table>
+  
+</div>
+</div>
+
+
+    <div id="menu1" class="tab-pane fade">
+     <h3>Admins</h3>
+     
+      <div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>first Name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Sign in count</th>
+        <th>last sign in Ip</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% if current_user.has_role? :admin or current_user.has_role? :super_admin%>
+       <% @admins.each do |admin|%>
+      <tr>
+        <td><%=link_to(admin.first_name,admin)%></td>
+        <td><%=admin.last_name%></td>
+        <td><%=admin.email%></td>
+        <td><%=admin.sign_in_count%></td>
+        <td><%=admin.last_sign_in_ip%></td>
+        <td><%=admin.roles_name%></td>
+      </tr> 
+      <%end%>
+      <% end %>
+          
+    </tbody>
+  </table>
+  
+</div> 
+ </div>
+
+
+    <div id="menu2" class="tab-pane fade">
+      
+       <h3>Production</h3>
+     
+      <div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>first Name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Sign in count</th>
+        <th>last sign in Ip</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% if current_user.has_role? :admin or current_user.has_role? :super_admin%>
+       <% @productions.each do |production|%>
+      <tr>
+        <td><%=link_to(production.first_name,production)%></td>
+        <td><%=production.last_name%></td>
+        <td><%=production.email%></td>
+        <td><%=production.sign_in_count%></td>
+        <td><%=production.last_sign_in_ip%></td>
+        <td><%=production.roles_name%></td>
+      </tr> 
+      <%end%>
+      <% end %>
+          
+    </tbody>
+  </table>
+  
+    </div> 
+    </div>
+
+
+
+
+    <div id="menu3" class="tab-pane fade">
+      <h3>Customer</h3>
+     
+      <div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>first Name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Sign in count</th>
+        <th>last sign in Ip</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% if current_user.has_role? :admin or current_user.has_role? :super_admin%>
+       <% @customers.each do |customer|%>
+      <tr>
+        <td><%=link_to(customers.first_name,customer)%></td>
+        <td><%=customer.last_name%></td>
+        <td><%=customer.email%></td>
+        <td><%=customer.sign_in_count%></td>
+        <td><%=customer.last_sign_in_ip%></td>
+        <td><%=customer.roles_name%></td>
+      </tr> 
+      <%end%>
+      <% end %>
+          
+    </tbody>
+  </table>
+  
+    </div> 
+    </div>
+
+
+<div id="menu4" class="tab-pane fade">
+      <h3>Dealer</h3>
+     
+      <div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>first Name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Sign in count</th>
+        <th>last sign in Ip</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% if current_user.has_role? :admin or current_user.has_role? :super_admin%>
+       <% @dealers.each do |dealer|%>
+      <tr>
+        <td><%=link_to(dealer.first_name,dealer)%></td>
+        <td><%=dealer.last_name%></td>
+        <td><%=dealer.email%></td>
+        <td><%=dealer.sign_in_count%></td>
+        <td><%=dealer.last_sign_in_ip%></td>
+        <td><%=dealer.roles_name%></td>
+      </tr> 
+      <%end%>
+      <% end %>
+          
+    </tbody>
+  </table>
+  
+    </div> 
+    </div>
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
