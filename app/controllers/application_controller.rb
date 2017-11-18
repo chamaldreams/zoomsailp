@@ -36,7 +36,7 @@ def after_sign_in_path_for(resource)
  home_guest_path
 
  elsif current_user.has_role? :admin or current_user.has_role? :super_admin
- admin_home_path
+ home_admin_path
 
 elsif current_user.has_role? :customer
  home_customer_path
@@ -45,7 +45,7 @@ elsif current_user.has_role? :dealer
  home_dealer_path
 
 elsif current_user.has_role? :production
- admin_home_path
+ home_production_path
 
 
  

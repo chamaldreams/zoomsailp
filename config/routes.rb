@@ -9,13 +9,11 @@ Rails.application.routes.draw do
                    }
 
   resources :users
-
-  get 'home/admin' => "home#admin", as: :admin_home
-  get 'home/production' => "home#production", as: :production_home
-
-
+  
+                 	
   get 'home/index'
 
+  get 'home/admin'
 
   get 'home/customer'
 

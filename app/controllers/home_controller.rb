@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-   before_action :authenticate_user!
+   
    skip_before_action :authenticate_user!, :only => [:index]
 
   
@@ -8,23 +8,29 @@ class HomeController < ApplicationController
   end
 
   def admin
-      authorize! :admin , HomeController,:message => "You Can't Access to admin Account."
+    authorize! :admin, HomeController
+    
+    
+      
   end
 
   def customer
-        authorize! :bbs , HomeController,:message => "You Can't Access to customer Account."
+    authorize! :customer, HomeController    
   end
 
   def dealer
-        authorize! :bbs , HomeController,:message => "You Can't Access to dealer Account."
+    authorize! :dealer, HomeController
+       
   end
 
   def production
-         authorize! :bbs , HomeController,:message => "You Can't Access to production Account."
+    authorize! :production, HomeController
+         
   end
 
   def guest
-     authorize! :guest , HomeController
+    authorize! :guest, HomeController
+     
 
   end
 end

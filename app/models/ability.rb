@@ -13,9 +13,17 @@ class Ability
          can :manage, :all
        end
 
-       if user.guest?
-        can :guest, HomeController
-        
+       if user.has_role? :production
+        can :production,HomeController
+
+       elsif user.has_role? :dealer
+        can :dealer,HomeController
+
+       elsif user.has_role? :customer
+        can :customer,HomeController
+
+       elsif user.has_role? :guest
+        can :guest,HomeController
 
        end 
 
