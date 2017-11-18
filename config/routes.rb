@@ -1,23 +1,21 @@
 Rails.application.routes.draw do
   
-  
 
-
-
-  
-                
-  
   root to:'home#index'
 
   devise_for :users, controllers: {
              
-                   registrations: 'users/registrations'}
+                   registrations: 'users/registrations',
+                   }
 
   resources :users
-                 	
+
+  get 'home/admin' => "home#admin", as: :admin_home
+  get 'home/production' => "home#production", as: :production_home
+
+
   get 'home/index'
 
-  get 'home/admin'
 
   get 'home/customer'
 

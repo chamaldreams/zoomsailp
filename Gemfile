@@ -34,6 +34,7 @@ gem "rolify"
 gem 'cancancan', '~> 2.0'
 gem 'paperclip', '~> 4.1'
 gem 'toastr-rails'
+gem 'simple_form'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'jquery-rails'

@@ -31,44 +31,34 @@
 
 					<hr>
 
-					<h5>User Role : <%=@user.roles_name%> <button  class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal">Change Role</button></h5>
-					<!-- Modal -->
-					  <div class="modal fade" id="myModal" role="dialog">
+					<% if current_user.has_role? :super_admin or current_user.has_role? :admin  %>
+					<h5>User Role : <%=@user.roles_name%> 
+                    <% unless @user.has_role? :super_admin %>
+                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal">Change Role</button>
+
+                    <div class="modal fade" id="myModal" role="dialog">
 					    <div class="modal-dialog modal-lg">
-			
 					      <div class="modal-content">
-					 
+					       <%= simple_form_for @user, :url => user_path(@user), :html => {:method => :put, :class => 'form-horizontal' } do |f| %>
 					        <div class="modal-header">
 					          <button type="button" class="close" data-dismiss="modal">&times;</button>
-					          <h4 class="modal-title">Modal Header</h4>
+					          <h4 class="modal-title">Change <%=@user.first_name.capitalize%>'s Role</h4>
 					        </div>
 					        <div class="modal-body">
-					          <fieldset>
-					          	<legend>User Roles</legend>
-					          	
-					          	<%= form_for @user do |f| %>
-					          		<% Role.all.each do |role|%>
-					          			<%= check_box_tag 'user[role_ids][]',role,@user.role_ids.include?(role.id) %>
-					          			<%= role.name%><br>
-					          			<%end%>
-					          			<%=f.submit%>
-					          			<%end%>
-
-
-					          </fieldset>
+					          <%= f.input :role_ids, :collection => Role.where("name != ?", 'super_admin'), :as => :radio_buttons, :label_method => lambda {|t| t.name.titleize}, :label => false, :item_wrapper_class => 'inline col-md-2', checked: @user.role_ids.first %>
 					        </div>
 					        <div class="modal-footer">
-					          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					           <%= f.submit "Change Role", :class => "btn btn-sucess" %>
+					          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 					        </div>
 					      </div>
-					      </div>
-					      </div>
-					      
+					    </div>
+					  </div>
+					</div>
 
-
-
-					        </div>
-
+					<% end %>       
+                    <% end %>
+                    <% end %>
 					        <hr>
 
 					        <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-success btn-sm'%>
@@ -90,4 +80,4 @@
   </div>
 </div>
   </div>
-</div>
+  </div>

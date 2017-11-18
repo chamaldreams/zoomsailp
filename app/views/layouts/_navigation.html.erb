@@ -13,13 +13,13 @@
          <% elsif current_user.has_role? :guest%>
           <%= link_to 'ZoomSails', home_guest_path, class: 'navbar-brand' %>
          <% elsif current_user.has_role? :admin%> 
-          <%= link_to 'ZoomSails', home_admin_path, class: 'navbar-brand' %>
+          <%= link_to 'ZoomSails', admin_home_path, class: 'navbar-brand' %>
          <% elsif current_user.has_role? :customer%> 
           <%= link_to 'ZoomSails', home_customer_path, class: 'navbar-brand' %>
          <% elsif current_user.has_role? :dealer%> 
           <%= link_to 'ZoomSails', home_dealer_path, class: 'navbar-brand' %>
          <% elsif current_user.has_role? :prodution%> 
-          <%= link_to 'ZoomSails', home_production_path, class: 'navbar-brand' %> 
+          <%= link_to 'ZoomSails', admin_home_path, class: 'navbar-brand' %> 
           <%end%>
         </div>
         
@@ -45,8 +45,14 @@
         </ul>
         </li>    
 
-
-
+<% elsif current_user.has_role? :dealer %>
+         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Settings <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to 'User Management', users_path%></li>
+          <li><a href="#">Page 1-2</a></li>
+          <li><a href="#">Page 1-3</a></li>
+        </ul>
+        </li>  
 
 
 

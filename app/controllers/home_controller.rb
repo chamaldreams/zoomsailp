@@ -1,13 +1,14 @@
 class HomeController < ApplicationController
-
-  skip_before_action :authenticate_user!, :only => [:index]
+   before_action :authenticate_user!
+   skip_before_action :authenticate_user!, :only => [:index]
 
   
   def index
+  
   end
 
   def admin
-      authorize! :asmin , HomeController,:message => "You Can't Access to admin Account."
+      authorize! :admin , HomeController,:message => "You Can't Access to admin Account."
   end
 
   def customer

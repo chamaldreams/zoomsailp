@@ -140,7 +140,7 @@
     <% if current_user.has_role? :admin or current_user.has_role? :super_admin%>
        <% @customers.each do |customer|%>
       <tr>
-        <td><%=link_to(customers.first_name,customer)%></td>
+        <td><%=link_to(customer.first_name,customer)%></td>
         <td><%=customer.last_name%></td>
         <td><%=customer.email%></td>
         <td><%=customer.sign_in_count%></td>

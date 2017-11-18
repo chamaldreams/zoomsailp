@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   
+
+
+  
  def index
   if current_user.has_role? :super_admin or current_user.has_role? :admin
  	@users = User.all
@@ -19,26 +22,24 @@ class UsersController < ApplicationController
     @user = User.find(params[:id]) if current_user.has_role? :admin or current_user.has_role? :super_admin
     @user = current_user if current_user.has_role? :dealer
     @user = current_user if current_user.has_role? :customer
-    @user = User.find(params[:id]) if current_user.has_role? :production
-    redirect_to users_path, alert: "You don't have priviledge to modify other users" and return if current_user.has_role? :customer and @user.id != current_user.id 
-    redirect_to users_path, alert: "Invalid user" and return if @user.nil?
-
+    
 
  end
 
  def update
-    respond_to do |format|
-    	@user = User.find(params[:id])
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'Userm was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    @user = nil
+    @user = User.find(params[:id]) if current_user.has_role? :admin or current_user.has_role? :super_admin
+    
+    @user = current_user if current_user.has_role? :dealer
+    @user = current_user if current_user.has_role? :customer
+    redirect_to users_path, alert: "You don't have priviledge to modify other users" and return if current_user.has_role? :customer and @user.id != current_user.id 
+    redirect_to users_path, alert: "Invalid user" and return if @user.nil?
+    if @user.update_attributes(secure_params)
+      redirect_to @user, :notice => "User updated."
+    else
+      redirect_to users_path, :alert => "Unable to update user.  #{@user.errors.messages.values}"
     end
-  end		
- 
+  end
  
  
  	
@@ -53,7 +54,23 @@ end
  	 params.require(:user).permit(:first_name,:last_name, :company_name, :telephone,:fax, :billing_address, :shipping_address,:avatar,:super_admin,:admin,:customer,:dealer,:production,:user_id,:role_id)
  end 
  
-
+def secure_params
+    params.require(:user).permit(:firstname, 
+                  :lastname, 
+                  :email, 
+                  :password, 
+                  :password_confirmation, 
+                  :remember_me, 
+                  :role_ids, 
+                  :company_name, 
+                  :billing_address, 
+                  :shipping_address, 
+                  :telephone, 
+                  :fax, 
+                  :web)
+          
+                  
+  end
 
 
 
